@@ -1,24 +1,46 @@
-# Logs
-logs
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build or production files
+build/
+dist/
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Ignore environment-specific configuration files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Ignore package-lock.json for npm
+package-lock.json
+
+# Ignore yarn.lock for Yarn
+yarn.lock
+
+# Ignore IDE/Editor-specific files
+.vscode/
+.idea/
+
+# Ignore user-specific files
+*.iml
+*.DS_Store
+Thumbs.db
+
+# Ignore logs and runtime data
+logs/
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Ignore coverage output
+coverage/
+
+# Ignore test snapshots
+__snapshots__/
+
+# Ignore custom folders or files you don't want in the repository
+custom-folder/
+custom-file.txt

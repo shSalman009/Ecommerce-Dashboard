@@ -17,8 +17,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useLoginMutation } from "@/features/auth/authApi";
+import { errorToast } from "@/lib/toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2 } from "lucide-react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -32,15 +34,21 @@ export default function SignIn() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "admin@gmail.com",
-      password: "Lasman49$&",
+      password: "Admin49$&",
     },
   });
 
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isLoading, isError, isSuccess }] = useLoginMutation();
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     login(values);
   }
+
+  useEffect(() => {
+    if (!isSuccess && isError) {
+      errorToast("Invalid Credentials");
+    }
+  }, [isSuccess, isError]);
 
   return (
     <div className="flex h-screen bg-gray-100 dark:bg-gray-900">
@@ -83,7 +91,11 @@ export default function SignIn() {
                     <FormItem>
                       <FormLabel>Password</FormLabel>
                       <FormControl>
-                        <Input placeholder="Password" {...field} />
+                        <Input
+                          type="password"
+                          placeholder="Password"
+                          {...field}
+                        />
                       </FormControl>
 
                       <FormMessage />
