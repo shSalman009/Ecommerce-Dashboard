@@ -135,10 +135,11 @@ function UpdateProductForm({ product }: { product: ProductType }) {
   // after success
   useEffect(() => {
     if (isSuccess) {
-      // form.reset(values);
+      form.reset();
       successToast(newData?.message || "Product created successfully");
       console.log(newData);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isSuccess, newData]);
 
   // after error
